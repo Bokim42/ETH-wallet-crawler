@@ -56,11 +56,11 @@ def extract_addresses_from_transactions(transactions):
 def crawl_wallets(initial_eth_address):
     global direct_interaction_wallets, indirect_interaction_wallets
     
-    print(f"Crawling direct interactions for {initial_eth_address}")
+    print(f"Crawling direct transfers for {initial_eth_address}")
     direct_transactions = get_transactions(initial_eth_address)
     direct_interaction_wallets = extract_addresses_from_transactions(direct_transactions)
     
-    print(f"Found {len(direct_interaction_wallets)} direct wallets. Crawling second hop...")
+    print(f"Found {len(direct_interaction_wallets)} direct interaction wallets. Crawling second hop...")
     for wallet in direct_interaction_wallets:
         if wallet not in visited_addresses:
             transactions = get_transactions(wallet)
